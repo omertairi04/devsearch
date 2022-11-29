@@ -1,0 +1,39 @@
+2: importojm metodat post_save edhe post_delete
+post_save - qka ndodh masi truhet nje proces
+post_delete - qka ndodh masi tfshihet nje proces 
+
+4:e thjeshtsojm punen permes dekoratorave
+
+6:Importojm modelin e Profilit
+7:Importojm modelin e User-it
+
+12:krijojm funkcionin createProfile me parametrat sender , instance , created , **kwargs
+~sender: specifikon nje dergues te veqant per te marr sinjale nga
+~instance: shembulli i klases dergues
+~created: True/False ; nqoftese perdoruesi eshte krijuar at'her True , nqoftse jo at'her False
+~**kwargs: Sintaksa speciale **kwargs në përkufizimet e funksioneve në python përdoret për të kaluar 
+një listë argumentesh me fjalë kyçe dhe me gjatësi të ndryshueshme
+13:mrena createProfile shikojm nqoftese created eshte True(by default it checks if it is True)
+14:variablen user e shndrrojm ne instancen(ja bojm vleren)
+~ variablen profile = e bojm query per me kriju profiles~
+15:variablen profile:permes modelit Profile krijojm(
+    16:variabla user = merr vleren e instances user(14)
+    17:variabla username = merr vleren e user.username
+    18:variabla email = merr vleren e user.email
+    19:variabla name = merr vleren e user.first_name
+~~~ vlerat user.___ merren nga modeli Profile qe eshte i lidhur me Userin
+)
+
+22:thrrasim post_save.connect(emri i funkcionin , sender=nga cili model presim sinjalet)
+
+25:krijojm funkcionin deleteUser me parametrat sender , instance, **kwargs
+26:variabla user = merr vlerat e instance.user(Profile.user)
+27:thrrasim funkcionin delete
+
+29:thrrasim post_delete.connect(emri i funkcionin , sender=nga cili model presim sinjalet)
+
+!!!!!Per me i lidhen sinjalet me applikacionin!!!!!
+settings.py kur ta lidhmi appi-n duhet me lidh permes 'appname.apps.AppnameConfig'
+tek appname -> apps.py hapim funkcionin ready():
+edhe importojm appname.signals
+

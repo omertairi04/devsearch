@@ -38,9 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'projects',
+    'projects.apps.ProjectsConfig',
     'users.apps.UsersConfig',
+
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,6 +127,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+
+# EMAIL 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+# search: gmail port
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'otairi010@gmail.com'
+"""
+ENABLE APP PASSWORDS IN THE GOOGLE ACCOUNT!
+AND ADD IT BELOW
+"""
+EMAIL_HOST_PASSWORD = 'iccevyfbmdsajyah'
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = '/images/'
